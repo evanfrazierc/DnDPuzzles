@@ -1,4 +1,5 @@
-﻿using DnDPuzzles.Services;
+﻿using DnDPuzzles.Data;
+using DnDPuzzles.Services;
 using DnDPuzzles.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,10 +13,12 @@ namespace DnDPuzzles.Controllers
     public class AppController : Controller
     {
         private readonly IMailService mailService;
+        private readonly IPuzzleRepository repository;
 
-        public AppController(IMailService mailService)
+        public AppController(IMailService mailService, IPuzzleRepository repository)
         {
             this.mailService = mailService;
+            this.repository = repository;
         }
 
         public IActionResult Index()
@@ -48,6 +51,12 @@ namespace DnDPuzzles.Controllers
             ViewBag.Title = "About Us";
 
             return View();
+        }
+
+        public IActionResult Shop()
+        {
+            var results = repository.GetAllProducts();
+            return View(results);
         }
     }
 }

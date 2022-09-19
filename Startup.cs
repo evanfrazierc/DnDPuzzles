@@ -1,3 +1,4 @@
+using DnDPuzzles.Data;
 using DnDPuzzles.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -25,6 +26,12 @@ namespace DnDPuzzles
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<PuzzleContext>();
+
+            services.AddTransient<PuzzleSeeder>();
+
+            services.AddScoped<IPuzzleRepository, PuzzleRepository>();
+
             services.AddTransient<IMailService, NullMailService>();
 
             services.AddControllersWithViews()

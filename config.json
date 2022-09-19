@@ -1,0 +1,10 @@
+{
+	"ConnectionStrings": {
+		"PuzzleContextDb": "Data Source=(localdb)\\ProjectsV13;Initial Catalog=DnDPuzzlesDb;Integrated Security=True;Connect Timeout=30;MultipleActiveResultSets=true;"
+	},
+	"Logging": {
+		"LogLevel": {
+			"Default": "Warning"
+		}
+	}
+}
