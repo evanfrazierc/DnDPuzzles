@@ -7,6 +7,11 @@ namespace DnDPuzzles.Data
     {
         IEnumerable<Product> GetAllProducts();
         IEnumerable<Product> GetProductsByCategory(string category);
+
+        IEnumerable<Order> GetAllOrders(bool includeItems);
+        Order GetOrderbyId(int id);
+
         bool SaveAll();
+        void AddEntity(object model);
     }
 }

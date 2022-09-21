@@ -1,4 +1,5 @@
 ﻿using DnDPuzzles.Data.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,27 @@ namespace DnDPuzzles.Data
             this.logger = logger;
         }
 
+        public void AddEntity(object model)
+        {
+            ctx.Add(model);
+        }
+
+        public IEnumerable<Order> GetAllOrders(bool includeItems)
+        {
+            if (includeItems)
+            {
+                return ctx.Orders
+                .Include(o => o.Items)
+                .ThenInclude(i => i.Product)
+                .ToList();
+            }
+            else
+            {
+                return ctx.Orders
+                    .ToList();
+            }
+        }
+
         public IEnumerable<Product> GetAllProducts()
         {
             try
@@ -31,9 +53,18 @@ namespace DnDPuzzles.Data
             }
             catch (Exception ex)
             {
-                logger.LogError($"Failed to get all products: {ex}")
+                logger.LogError($"Failed to get all products: {ex}");
                 return null;
             }
+        }
+
+        public Order GetOrderbyId(int id)
+        {
+            return ctx.Orders
+                .Include(o => o.Items)
+                .ThenInclude(i => i.Product)
+                .Where(o => o.Id == id)
+                .FirstOrDefault();
         }
 
         public IEnumerable<Product> GetProductsByCategory(string category)

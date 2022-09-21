@@ -1,3 +1,4 @@
+using AutoMapper;
 using DnDPuzzles.Data;
 using DnDPuzzles.Services;
 using Microsoft.AspNetCore.Builder;
@@ -7,9 +8,11 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace DnDPuzzles
@@ -30,12 +33,15 @@ namespace DnDPuzzles
 
             services.AddTransient<PuzzleSeeder>();
 
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
             services.AddScoped<IPuzzleRepository, PuzzleRepository>();
 
             services.AddTransient<IMailService, NullMailService>();
 
             services.AddControllersWithViews()
-                .AddRazorRuntimeCompilation();
+                .AddRazorRuntimeCompilation()
+                .AddNewtonsoftJson(cfg => cfg.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
             services.AddRazorPages();
         }
