@@ -34,7 +34,7 @@ namespace DnDPuzzles
             using (var scope = scopeFactory.CreateScope())
             {
                 var seeder = scope.ServiceProvider.GetService<PuzzleSeeder>();
-                seeder.Seed();
+                seeder.SeedAsync().Wait();
             }
         }
 

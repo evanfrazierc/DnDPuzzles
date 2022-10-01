@@ -2,6 +2,8 @@
 using DnDPuzzles.Data;
 using DnDPuzzles.Data.Entities;
 using DnDPuzzles.ViewModels;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -13,6 +15,7 @@ using System.Threading.Tasks;
 namespace DnDPuzzles.Controllers
 {
     [Route("/api/orders/{orderid}/items")]
+    [Authorize(AuthenticationSchemes=JwtBearerDefaults.AuthenticationScheme)]
     public class OrderItemsController : Controller
     {
         private readonly IPuzzleRepository repository;
@@ -31,7 +34,7 @@ namespace DnDPuzzles.Controllers
         [HttpGet]
         public IActionResult Get(int orderId)
         {
-            var order = repository.GetOrderbyId(orderId);
+            var order = repository.GetOrderbyId(User.Identity.Name, orderId);
             if (order != null) return Ok(mapper.Map<IEnumerable<OrderItem>, IEnumerable<OrderItemViewModel>>(order.Items));
             return NotFound();
         }
@@ -39,7 +42,7 @@ namespace DnDPuzzles.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int orderId, int id)
         {
-            var order = repository.GetOrderbyId(orderId);
+            var order = repository.GetOrderbyId(User.Identity.Name, orderId);
             if (order != null)
             {
                 var item = order.Items.Where(i => i.Id == id).FirstOrDefault();

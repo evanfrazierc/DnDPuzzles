@@ -1,5 +1,6 @@
 ﻿using DnDPuzzles.Data.Entities;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,16 +15,36 @@ namespace DnDPuzzles.Data
     {
         private readonly PuzzleContext ctx;
         private readonly IWebHostEnvironment env;
+        private readonly UserManager<StoreUser> userManager;
 
-        public PuzzleSeeder(PuzzleContext ctx, IWebHostEnvironment env)
+        public PuzzleSeeder(PuzzleContext ctx, IWebHostEnvironment env, UserManager<StoreUser> userManager)
         {
             this.ctx = ctx;
             this.env = env;
+            this.userManager = userManager;
         }
 
-        public void Seed()
+        public async Task SeedAsync()
         {
             ctx.Database.EnsureCreated();
+
+            StoreUser user = await userManager.FindByEmailAsync("efrazier@dndpuzzles.com");
+            if (user == null)
+            {
+                user = new StoreUser
+                {
+                    FirstName = "Evan",
+                    LastName = "Frazier",
+                    Email = "efrazier@dndpuzzles.com",
+                    UserName = "efrazier@dndpuzzles.com"
+                };
+
+                var result = await userManager.CreateAsync(user, "P@ssw0rd!");
+                if (result != IdentityResult.Success)
+                {
+                    throw new InvalidOperationException("Could not create new user in seeder");
+                }
+            }
 
             if (!ctx.Products.Any())
             {
@@ -36,6 +57,7 @@ namespace DnDPuzzles.Data
 
                 var order = new Order()
                 {
+                    User = user,
                     OrderDate = DateTime.Today,
                     OrderNumber = "10000",
                     Items = new List<OrderItem>()

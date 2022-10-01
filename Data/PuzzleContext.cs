@@ -1,4 +1,5 @@
 ﻿using DnDPuzzles.Data.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DnDPuzzles.Data
 {
-    public class PuzzleContext : DbContext
+    public class PuzzleContext : IdentityDbContext<StoreUser>
     {
         private readonly IConfiguration config;
 

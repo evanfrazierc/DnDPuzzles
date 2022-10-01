@@ -1,6 +1,7 @@
 ﻿using DnDPuzzles.Data;
 using DnDPuzzles.Services;
 using DnDPuzzles.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -53,6 +54,7 @@ namespace DnDPuzzles.Controllers
             return View();
         }
 
+        [Authorize]
         public IActionResult Shop()
         {
             var results = repository.GetAllProducts();
