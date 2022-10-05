@@ -1,10 +1,10 @@
-﻿class Shopper {
+﻿class Shopper { 
 
-    constructor(private firstName: string, private lastName: string) {
-    }
+  constructor(private firstName: string, private lastName: string) {
+  }
 
-    showName() {
-        alert(`${this.firstName} ${this.lastName}`);
-    }
+  showName() {
+    alert(`${this.firstName} ${this.lastName}`);
+  }
 
 }

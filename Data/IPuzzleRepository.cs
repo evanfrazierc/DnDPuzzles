@@ -1,18 +1,19 @@
-﻿using DnDPuzzles.Data.Entities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using DndPuzzles.Data.Entities;
+using Microsoft.AspNetCore.Mvc;
 
-namespace DnDPuzzles.Data
+namespace DndPuzzles.Data
 {
-    public interface IPuzzleRepository
-    {
-        IEnumerable<Product> GetAllProducts();
-        IEnumerable<Product> GetProductsByCategory(string category);
+  public interface IPuzzleRepository
+  {
+    IEnumerable<Product> GetAllProducts();
+    IEnumerable<Product> GetProductsByCategory(string category);
 
-        IEnumerable<Order> GetAllOrders(bool includeItems);
-        IEnumerable<Order> GetAllOrdersByUser(string username, bool includeItems);
-        Order GetOrderbyId(string username, int id);
+    IEnumerable<Order> GetAllOrders(bool includeItems);
+    IEnumerable<Order> GetOrdersByUser(string username, bool includeItems);
+    Order GetOrderById(string username, int id);
 
-        bool SaveAll();
-        void AddEntity(object model);
-    }
+    void AddEntity(object entity);
+    bool SaveAll();
+  }
 }

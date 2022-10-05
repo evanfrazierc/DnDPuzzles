@@ -1,64 +1,62 @@
-﻿using DnDPuzzles.Data;
-using DnDPuzzles.Services;
-using DnDPuzzles.ViewModels;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DndPuzzles.Data;
+using DndPuzzles.Services;
+using DndPuzzles.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
-namespace DnDPuzzles.Controllers
+namespace DndPuzzles.Controllers
 {
-    public class AppController : Controller
+  public class AppController : Controller
+  {
+    private readonly IMailService _mailService;
+    private readonly IPuzzleRepository _repository;
+
+    public AppController(IMailService mailService, IPuzzleRepository repository)
     {
-        private readonly IMailService mailService;
-        private readonly IPuzzleRepository repository;
-
-        public AppController(IMailService mailService, IPuzzleRepository repository)
-        {
-            this.mailService = mailService;
-            this.repository = repository;
-        }
-
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        [HttpGet("contact")]
-        public IActionResult Contact()
-        {
-            return View();
-        }
-
-        [HttpPost("contact")]
-        public IActionResult Contact(ContactViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                // send email
-                mailService.SendMessage("e.frazier@nextech.com", model.Subject, model.Message);
-                ViewBag.UserMessage = "Mail Sent";
-                ModelState.Clear();
-            }
-
-            return View();
-        }
-
-        public IActionResult About()
-        {
-            ViewBag.Title = "About Us";
-
-            return View();
-        }
-
-        [Authorize]
-        public IActionResult Shop()
-        {
-            var results = repository.GetAllProducts();
-            return View(results);
-        }
+      _mailService = mailService;
+      _repository = repository;
     }
+
+    public IActionResult Index()
+    {
+      return View();
+    }
+
+    [HttpGet("contact")]
+    public IActionResult Contact()
+    {
+      return View();
+    }
+
+    [HttpPost("contact")]
+    public IActionResult Contact(ContactViewModel model)
+    {
+      if (ModelState.IsValid)
+      {
+        // Send the Email
+        _mailService.SendMessage("efrazier@angular.com", model.Subject, $"From: {model.Name} - {model.Email}, Message: {model.Message}");
+        ViewBag.UserMessage = "Mail Sent...";
+        ModelState.Clear();
+      }
+
+      return View();
+    }
+
+    public IActionResult About()
+    {
+      return View();
+    }
+
+    public IActionResult Shop()
+    {
+      var results = _repository.GetAllProducts();
+
+      return View(results);
+    }
+  }
 }

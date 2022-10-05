@@ -1,7 +1,7 @@
-﻿namespace DnDPuzzles.Services
+﻿namespace DndPuzzles.Services
 {
-    public interface IMailService
-    {
-        void SendMessage(string to, string subject, string body);
-    }
+  public interface IMailService
+  {
+    void SendMessage(string to, string subject, string body);
+  }
 }

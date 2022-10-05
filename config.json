@@ -1,16 +1,19 @@
 {
-	"ConnectionStrings": {
-		"PuzzleContextDb": "Data Source=(localdb)\\ProjectsV13;Initial Catalog=DnDPuzzlesDb;Integrated Security=True;Connect Timeout=30;MultipleActiveResultSets=true;"
-	},
-	"Logging": {
-		"LogLevel": {
-			"Default": "Information",
-			"Microsoft": "Warning"
-		}
-	},
-	"Token": {
-		"Key": "asdfasdfasdfdsasdfasdfasf",
-		"Issuer": "http://localhost:59312",
-		"Audience": "http://localhost:59312"
-	}
+  "Colors": {
+    "Favorite": "Blue"
+  },
+  "ConnectionStrings": {
+    "PuzzleConnectionString": "Data Source=(localdb)\\ProjectsV13;Database=DnDPuzzlesDb;Integrated Security=True;MultipleActiveResultSets=true;"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning"
+    }
+  },
+  "Tokens": {
+    "Key": "a;sdlkfja; lsdkfj ;alksdfj ;alksdfj; aiefj;lskij;fldsk",
+    "Issuer": "localhost",
+    "Audience": "localhost"
+  }
 }

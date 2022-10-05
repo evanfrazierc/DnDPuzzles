@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DnDPuzzles.Data.Entities
+namespace DndPuzzles.Data.Entities
 {
   public class Order
   {
