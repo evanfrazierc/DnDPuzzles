@@ -2,5 +2,6 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ShowAllFiles>false</ShowAllFiles>
+    <NameOfLastUsedPublishProfile>C:\code\git\DnDPuzzles\Properties\PublishProfiles\DnDPuzzles-Evan2022Q3Goal - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>
