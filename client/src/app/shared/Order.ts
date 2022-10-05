@@ -4,10 +4,9 @@
   unitPrice: number;
   productId: number;
   productCategory: string;
-  productSize: string;
   productTitle: string;
-  productArtist: string;
-  productArtId: string;
+  productCreator: string;
+  productPuzzleId: string;
 }
 
 export class Order {

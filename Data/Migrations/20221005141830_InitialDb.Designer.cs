@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace DndPuzzles.Migrations
+namespace DnDPuzzles.Migrations
 {
     [DbContext(typeof(PuzzleContext))]
-    [Migration("20210209054614_Identity")]
-    partial class Identity
+    [Migration("20221005141830_InitialDb")]
+    partial class InitialDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace DndPuzzles.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
-            modelBuilder.Entity("DnDPuzzles.Data.Entities.Order", b =>
+            modelBuilder.Entity("DndPuzzles.Data.Entities.Order", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -47,12 +47,12 @@ namespace DndPuzzles.Migrations
                         new
                         {
                             Id = 1,
-                            OrderDate = new DateTime(2021, 2, 9, 5, 46, 13, 777, DateTimeKind.Utc).AddTicks(6681),
+                            OrderDate = new DateTime(2022, 10, 5, 14, 18, 29, 822, DateTimeKind.Utc).AddTicks(4173),
                             OrderNumber = "12345"
                         });
                 });
 
-            modelBuilder.Entity("DnDPuzzles.Data.Entities.OrderItem", b =>
+            modelBuilder.Entity("DndPuzzles.Data.Entities.OrderItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -62,7 +62,7 @@ namespace DndPuzzles.Migrations
                     b.Property<int?>("OrderId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ProductId")
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
@@ -80,41 +80,26 @@ namespace DndPuzzles.Migrations
                     b.ToTable("OrderItem");
                 });
 
-            modelBuilder.Entity("DnDPuzzles.Data.Entities.Product", b =>
+            modelBuilder.Entity("DndPuzzles.Data.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("ArtDating")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ArtDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ArtId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Artist")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("ArtistBirthDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("ArtistDeathDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ArtistNationality")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Category")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Creator")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("money");
 
-                    b.Property<string>("Size")
+                    b.Property<string>("PuzzleDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PuzzleId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
@@ -125,7 +110,7 @@ namespace DndPuzzles.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("DnDPuzzles.Data.Entities.StoreUser", b =>
+            modelBuilder.Entity("DndPuzzles.Data.Entities.StoreUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -327,24 +312,26 @@ namespace DndPuzzles.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("DnDPuzzles.Data.Entities.Order", b =>
+            modelBuilder.Entity("DndPuzzles.Data.Entities.Order", b =>
                 {
-                    b.HasOne("DnDPuzzles.Data.Entities.StoreUser", "User")
+                    b.HasOne("DndPuzzles.Data.Entities.StoreUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("DnDPuzzles.Data.Entities.OrderItem", b =>
+            modelBuilder.Entity("DndPuzzles.Data.Entities.OrderItem", b =>
                 {
-                    b.HasOne("DnDPuzzles.Data.Entities.Order", "Order")
+                    b.HasOne("DndPuzzles.Data.Entities.Order", "Order")
                         .WithMany("Items")
                         .HasForeignKey("OrderId");
 
-                    b.HasOne("DnDPuzzles.Data.Entities.Product", "Product")
+                    b.HasOne("DndPuzzles.Data.Entities.Product", "Product")
                         .WithMany()
-                        .HasForeignKey("ProductId");
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Order");
 
@@ -362,7 +349,7 @@ namespace DndPuzzles.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("DnDPuzzles.Data.Entities.StoreUser", null)
+                    b.HasOne("DndPuzzles.Data.Entities.StoreUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -371,7 +358,7 @@ namespace DndPuzzles.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("DnDPuzzles.Data.Entities.StoreUser", null)
+                    b.HasOne("DndPuzzles.Data.Entities.StoreUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -386,7 +373,7 @@ namespace DndPuzzles.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DnDPuzzles.Data.Entities.StoreUser", null)
+                    b.HasOne("DndPuzzles.Data.Entities.StoreUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -395,14 +382,14 @@ namespace DndPuzzles.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("DnDPuzzles.Data.Entities.StoreUser", null)
+                    b.HasOne("DndPuzzles.Data.Entities.StoreUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("DnDPuzzles.Data.Entities.Order", b =>
+            modelBuilder.Entity("DndPuzzles.Data.Entities.Order", b =>
                 {
                     b.Navigation("Items");
                 });

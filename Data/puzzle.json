@@ -1,0 +1,75 @@
+[
+  {
+    "Id": 0,
+    "Category": "Word Game",
+    "Price": 4.99,
+    "Title": "Wordle in DnD",
+    "PuzzleDescription": "Wordle is a web-based word game that has entranced many family and friends into a daily competition of guessing a five letter word in the least amount of tries.",
+    "PuzzleId": "SK-A-3262",
+    "Creator": "Wally DM"
+  },
+  {
+    "Id": 0,
+    "Category": "Maze Puzzle",
+    "Price": 8.99,
+    "Title": "Back and Forth Maze",
+    "PuzzleDescription": "As our adventurers explore the corridors of this dungeon or castle environment, they realize that they are trapped in a maze and seem to be traveling in circles. How do they get out of this maze and what clues are available for them to follow the correct path?",
+    "PuzzleId": "SK-A-4050",
+    "Creator": "Wally DM"
+  },
+  {
+    "Id": 0,
+    "Category": "Combat Puzzle",
+    "Price": 2.99,
+    "Title": "The Adaptor",
+    "PuzzleDescription": "Our adventurers have found the item that they have spent the entire campaign looking for. But, it is protected by a strange being that absorbs and becomes immune to their attacks. Will they defeat the Adaptor and claim their prize or will they fail to realize how to manipulate damge and find themselves falling to the blade it wields?",
+    "PuzzleId": "SK-A-4691",
+    "Creator": "Wizards of the Coast"
+  },
+  {
+    "Id": 0,
+    "Category": "Logic Puzzle",
+    "Price": 9.99,
+    "Title": "Painted Minotaur Room",
+    "PuzzleDescription": "Painted walls and a shadowy figure … how can these insubstantial elements open that all-too-solid door? A locked-room puzzle with multiple solutions!",
+    "PuzzleId": "SK-A-5033",
+    "Creator": "Wizards of the Coast"
+  },
+  {
+    "Id": 0,
+    "Category": "Logic Puzzle",
+    "Price": 8.99,
+    "Title": "Three 3:33",
+    "PuzzleDescription": "Our adventuring party has found a chamber with 12 pedestals in a circle forming what seems to be an analog clock. Each pedestal has a tablet that can be turned over to reveal a number, written out in the Common language. On the wall is a message… perhaps a clue as to what to do with the tablets on the pedestal. Will your adventurers be on time for their appointment at 3:33? Let’s see!",
+    "PuzzleId": "SK-A-2344",
+    "Creator": "Jolzeres"
+  },
+  {
+    "Id": 0,
+    "Category": "Sequence Puzzle",
+    "Price": 8.99,
+    "Title": "The Prismatic Owl 2: Electric HootaLoo",
+    "PuzzleDescription": "Our adventuring party must collect all 5 Owl Statuettes and place them in the correct order on the Dais and lock them in place… If they solve the puzzle, all is well. But, if they get it wrong, they’ll be hearing the screeching sounds of the electric hoot-a-loo in their head.",
+    "PuzzleId": "SK-A-4885",
+    "Creator": "Wally DM"
+  },
+  {
+    "Id": 0,
+    "Category": "Logic Puzzle",
+    "Price": 7.99,
+    "Title": "Eyes of the Beholder",
+    "PuzzleDescription": "Our adventurers have found themselves trapped in a room with no way to get out. They find a stone statue of a Beholder. It’s center eye is active and dousing the area with an anti-magic ray, but it’s eye stalks are empty and void of the 10 eyes that could fill them. Near the statue is a cauldron filled with a gooey, optic slime and thousands of Red, Brown, Blue, Green and Purple eyes.",
+    "PuzzleId": "SK-A-4674",
+    "Creator": "Wally DM"
+  },
+  {
+    "Id": 0,
+    "Category": "Logic Puzzle",
+    "Price": 7.99,
+    "Title": "The Chamber of Tymora",
+    "PuzzleDescription": "Our adventurers are exploring an abandoned, underground casino that has remnants of worship to the goddess Tymora. In order to access a hidden chamber, obtain an item or receive a blessing of good luck, four cards must be drawn from a deck of 52 cards.",
+    "PuzzleId": "SK-A-2860",
+    "Creator": "Wally DM"
+  }
+]
+  

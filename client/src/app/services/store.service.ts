@@ -61,10 +61,9 @@ export class Store {
       item = new OrderItem();
       item.productId = product.id;
       item.productTitle = product.title;
-      item.productArtId = product.artId;
-      item.productArtist = product.artist;
+      item.productPuzzleId = product.puzzleId;
+      item.productCreator = product.creator;
       item.productCategory = product.category;
-      item.productSize = product.size;
       item.unitPrice = product.price;
       item.quantity = 1;
 

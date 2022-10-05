@@ -16,7 +16,7 @@ namespace DndPuzzles.ViewModels
     public string ProductCategory { get; set; }
     public string ProductSize { get; set; }
     public string ProductTitle { get; set; }
-    public string ProductArtist { get; set; }
-    public string ProductArtId { get; set; }
+    public string ProductCreator { get; set; }
+    public string ProductPuzzleId { get; set; }
   }
 }

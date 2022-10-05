@@ -52,7 +52,7 @@ namespace DndPuzzles.Data
       if (!_ctx.Products.Any())
       {
         // Need to create the Sample Data
-        var file = Path.Combine(_hosting.ContentRootPath, "Data/art.json");
+        var file = Path.Combine(_hosting.ContentRootPath, "Data/puzzle.json");
         var json = File.ReadAllText(file);
         var products = JsonSerializer.Deserialize<IEnumerable<Product>>(json);
         _ctx.Products.AddRange(products);
