@@ -1,15 +1,17 @@
 ﻿<div class="row">
   <div *ngFor="let p of store.products" class="col-md-4">
-    <div class="border bg-light rounded p-1">
-      <img src="/img/{{ p.puzzleId }}.jpg" class="img-fluid product-image" alt="{{ p.creator }}" />
-      <h5>{{ p.title }}</h5>
-      <ul class="products-props">
-        <li>Category: {{ p.category }}</li>
-        <li>Price: {{ p.price | currency }}</li>
-        <li>Creator: {{ p.creator }}</li>
-        <li>{{ p.puzzleDescription }}</li>
-      </ul>
-      <button id="buyButton" class="btn btn-success" (click)="store.addToOrder(p)">Buy</button>
+    <div class="border bg-light rounded p-2">
+        <div class="p-1 m-1">
+            <img src="/img/{{ p.puzzleId }}.jpg" class="img-fluid product-image shadow-none" alt="{{ p.creator }}" />
+            <h5>{{ p.title }}</h5>
+            <ul class="products-props">
+                <li>Category: {{ p.category }}</li>
+                <li>Price: {{ p.price | currency }}</li>
+                <li>Creator: {{ p.creator }}</li>
+                <li>{{ p.puzzleDescription }}</li>
+            </ul>
+            <button id="buyButton" class="btn btn-success" (click)="store.addToOrder(p)">Buy</button>
+        </div>
     </div>
   </div>
 </div>

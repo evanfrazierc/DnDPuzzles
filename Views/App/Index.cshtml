@@ -1,64 +1,74 @@
 ﻿@{
-  ViewBag.Title = "Home Page";
+  ViewBag.Title = "Welcome to DnD Puzzles!";
 }
+
+
 <div class="row">
-  <div class="col-md-9">
-    <div class="product-info">
-      <img src="~/img/beholder.jpg" />
-      <h3>Featured Puzzle</h3>
-      <ul class="products-props">
-        <li>Title: Eyes of the Beholder</li>
-        <li>Price: $7.99</li>
-        <li>Creator: Wally DM</li>
-        <li>Description: Our adventurers have found themselves trapped in a room with no way to get out. They find a stone statue of a Beholder. It’s center eye is active and dousing the area with an anti-magic ray, but it’s eye stalks are empty and void of the 10 eyes that could fill them. Near the statue is a cauldron filled with a gooey, optic slime and thousands of Red, Brown, Blue, Green and Purple eyes.</li>
-      </ul>
-      <button id="buyButton" class="btn btn-success">Buy</button>
+    <div class="col-md-6 offset-3 text-center">
+        <p>
+            This is a site built by Evan Frazier with the purpose of learning how to integrate Angular with a .Net Core web app.
+            <br />Browse to the Shop page to see the Angular components in action.
+            <br />(Don't worry, you won't actually be buying anything)
+        </p>
     </div>
+    <div class="col-md-6 col-sm-1 offset-3">
+        <div class="row">
+            <div class="col">
+                <img src="~/img/beholder.jpg" />
+            </div>
+            <div class="col">
+                <h3>Featured Puzzle</h3>
+                <ul class="products-props">
+                    <li>Title: Eyes of the Beholder</li>
+                    <li>Price: $7.99</li>
+                    <li>Creator: Wally DM</li>
+                    <li>Description: Our adventurers have found themselves trapped in a room with no way to get out. They find a stone statue of a Beholder. It’s center eye is active and dousing the area with an anti-magic ray, but it’s eye stalks are empty and void of the 10 eyes that could fill them. Near the statue is a cauldron filled with a gooey, optic slime and thousands of Red, Brown, Blue, Green and Purple eyes.</li>
+                </ul>
+                <button id="buyButton" class="btn btn-success">Buy</button>
+            </div>
 
-    <div id="theForm">
-      <form>
-        <label>Username:</label>
-        <br />
-        <input />
-        <br />
-        <label>Email:</label>
-        <br />
-        <input type="email" />
-        <br />
-        <label>Subject:</label>
-        <br />
-        <input type="text" />
-        <br />
-        <label>Message:</label>
-        <br />
-        <textarea rows="4"> </textarea>
-        <br />
-        <input type="submit" value="Send Message" />
-      </form>
-    </div>
+            @*<div id="theForm">
+                    <form>
+                        <label>Username:</label>
+                        <br />
+                        <input />
+                        <br />
+                        <label>Email:</label>
+                        <br />
+                        <input type="email" />
+                        <br />
+                        <label>Subject:</label>
+                        <br />
+                        <input type="text" />
+                        <br />
+                        <label>Message:</label>
+                        <br />
+                        <textarea rows="4"> </textarea>
+                        <br />
+                        <input type="submit" value="Send Message" />
+                    </form>
+                </div>
 
-    <div>
-      <div id="loginToggle">Login</div>
-      <form class="popup-form">
-        <div>
-          <label>Username</label>
-          <input />
+                <div>
+                    <div id="loginToggle">Login</div>
+                    <form class="popup-form">
+                        <div>
+                            <label>Username</label>
+                            <input />
+                        </div>
+                        <div>
+                            <label>Password</label>
+                            <input type="password" />
+                        </div>
+                        <div>
+                            <input type="checkbox" />
+                            <label>Remember me?</label>
+                        </div>
+                        <div>
+                            <input type="submit" value="Login" />
+                        </div>
+                    </form>
+                </div>*@
         </div>
-        <div>
-          <label>Password</label>
-          <input type="password" />
-        </div>
-        <div>
-          <input type="checkbox" />
-          <label>Remember me?</label>
-        </div>
-        <div>
-          <input type="submit" value="Login" />
-        </div>
-      </form>
     </div>
-  </div>
-  <div class="col-md-3">
-    <p>This is a fun site to do some buying of Dnd puzzles.</p>
-  </div>
 </div>

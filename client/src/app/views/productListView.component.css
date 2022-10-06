@@ -5,5 +5,7 @@
 }
 
 .products-props {
-  font-size: .9rem;
+    font-size: .9rem;
+    padding-top: 1px;
+    padding-bottom: 1px;
 }
